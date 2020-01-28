@@ -27,7 +27,18 @@ class Array : public Object {
         size_t length();
 
         /**
-         * @brief      Sets the given index to point to the given object.
+         * @brief      Searches for the first match and returns the index of it. 
+         *             Returns the size of the array if the object cannot be found.
+         *
+         * @param      obj   The object
+         *
+         * @return     the index of the first match of the given object
+         */
+        size_t index_of(Object* obj);
+
+        /**
+         * @brief      Stores the given object at the given index in the array. 
+         *             Replaces previous element stored there.
          *
          * @param      obj   The object
          * @param[in]  idx   The index
@@ -65,4 +76,4 @@ class Array : public Object {
          * @param[in]  size  The new size of the array
          */
         void resize(size_t size);
-}
+};
