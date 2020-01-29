@@ -97,6 +97,26 @@ void test_resize() {
 }
 
 /**
+ * @brief      Tests storage of primitives
+ */
+void test_primitives() {
+	FloatWrapper* fw = new FloatWrapper(1.5);
+	IntWrapper* iw = new IntWrapper(2);
+	BoolWrapper* bw = new BoolWrapper(false);
+	Array* arr = new Array(3);
+	arr->set(fw, 0);
+	arr->set(iw, 1);
+	arr->set(bw, 2);
+	assert(fw->equals(arr->get(0)));
+	assert(iw->equals(arr->get(1)));
+	assert(bw->equals(arr->get(2)));
+	delete(fw);
+	delete(iw);
+	delete(bw);
+	delete(arr);
+}
+
+/**
  * @brief      Runs tests on the array class
  *
  * @param[in]  argc  The count of arguments

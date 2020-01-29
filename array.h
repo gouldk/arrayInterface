@@ -95,3 +95,126 @@ class Array : public Object {
          */
         void resize(size_t size);
 };
+
+/**
+ * @brief      This class describes a float wrapper.
+ */
+class FloatWrapper : public Object {
+public:
+    /**
+     * @brief      Constructs a new instance.
+     *
+     * @param[in]  f     a float
+     */
+    FloatWrapper(float f) {}
+
+    /**
+     * @brief      Destroys the object.
+     */
+    ~FloatWrapper() {}
+
+    /**
+     * @brief      determines if this object is same as the other one.
+     *
+     * @param      other  The other
+     *
+     * @return     True if equal, false if not
+     */
+    bool equals(Object* other);
+
+    /**
+     * @brief      Gets the hash value for this object (and sets if unset).
+     *
+     * @return     a size_t representing the hash value
+     */
+    size_t hash();
+
+    /**
+     * @brief      gets the float stored in this wrapper
+     *
+     * @return     the float
+     */
+    float get();
+};
+
+/**
+ * @brief      This class describes an integer wrapper.
+ */
+class IntWrapper : public Object {
+public:
+    /**
+     * @brief      Constructs a new instance.
+     *
+     * @param[in]  i     an int
+     */
+    IntWrapper(int i) {}
+
+    /**
+     * @brief      Destroys the object.
+     */
+    ~IntWrapper() {}
+
+    /**
+     * @brief      determines if this object is same as the other one.
+     *
+     * @param      other  The other
+     *
+     * @return     True if equal, false if not
+     */
+    bool equals(Object* other);
+
+    /**
+     * @brief      Gets the hash value for this object (and sets if unset).
+     *
+     * @return     a size_t representing the hash value
+     */
+    size_t hash();
+
+    /**
+     * @brief      gets the int stored in this wrapper
+     *
+     * @return     the int
+     */
+    int get();
+};
+
+/**
+ * @brief      This class describes a bool wrapper.
+ */
+class BoolWrapper : public Object {
+public:
+    /**
+     * @brief      Constructs a new instance.
+     *
+     * @param[in]  b     a bool
+     */
+    BoolWrapper(bool b) {}
+
+    /**
+     * @brief      Destroys the object.
+     */
+    ~BoolWrapper() {}
+
+    /**
+     * @brief      determines if this object is same as the other one.
+     *
+     * @param      other  The other
+     *
+     * @return     True if equal, false if not
+     */
+    bool equals(Object* other);
+
+    /**
+     * @brief      Gets the hash value for this object (and sets if unset).
+     *
+     * @return     a size_t representing the hash value
+     */
+    size_t hash();
+
+    /**
+     * @brief      get the bool stored in this wrapper
+     *
+     * @return     the bool
+     */
+    bool get();
+};
