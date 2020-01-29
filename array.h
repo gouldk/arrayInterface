@@ -6,6 +6,8 @@
 
 /**
  * @brief      This class describes an array of objects.
+ *             The array is of a fixed size and should only resize when the user specifies it.
+ *             Elements of the array are null until set by the user.
  */
 class Array : public Object {
     public:
@@ -18,6 +20,23 @@ class Array : public Object {
          * @brief      Destroys the object.
          */
         ~Array() {}
+
+         /* @brief      Gets the hash value for this array.
+          *             Arrays of the same size with the same elements have the same hash value.
+         *
+         * @return     a size_t representing the hash value
+         */
+        size_t hash();
+
+        /**
+         * @brief      determines if this array is same as the other one.
+         *             Arrays of the same size with the same elements are equal.
+         *
+         * @param      other  The other object
+         *
+         * @return     True if equal, false if not
+         */
+        bool equals(Object* other);
 
         /**
          * @brief      returns the length of the array
@@ -39,6 +58,7 @@ class Array : public Object {
         /**
          * @brief      Stores the given object at the given index in the array. 
          *             Replaces previous element stored there.
+         *             Cannot set an index beyond the size of the array.
          *
          * @param      obj   The object
          * @param[in]  idx   The index
@@ -55,20 +75,18 @@ class Array : public Object {
         Object* get(size_t idx);
 
         /**
-         * @brief      Removes the object at the specified index.
+         * @brief      Clears the element at the given index by setting it to null.
          *
          * @param[in]  idx   The index
          *
          * @return     the object that was removed
          */
-        Object* remove(size_t idx);
+        Object* clear(size_t idx);
 
         /**
-         * @brief      Adds the given object to the next available index (at the end of the array)
-         *
-         * @param      obj   The object
+         * @brief      Clears all elements in the array
          */
-        void push(Object* obj);
+        void clear_all();
 
         /**
          * @brief      resizes the array to the given size, discarding elements that no longer fit

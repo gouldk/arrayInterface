@@ -22,6 +22,26 @@ void test_constructor_length() {
 }
 
 /**
+ * @brief      Tests hashing and equality for the array.
+ */
+void test_hash_equals() {
+	Object* obj = new Object();
+	Array* arr = new Array(10);
+	Array* arr2 = new Array(10);
+	assert(arr->equals(arr2));
+	assert(arr->hash() == arr2->hash());
+	arr->set(obj, 1);
+	assert(!arr->equals(arr2));
+	assert(!arr->hash() == arr2->hash());
+	arr2->set(obj, 1);
+	assert(arr->equals(arr2));
+	assert(arr->hash() == arr2->hash());
+	arr2->resize(20);
+	assert(!arr->equals(arr2));
+	assert(!arr->hash() == arr2->hash());
+}
+
+/**
  * @brief      Tests the get and set functions for Array
  */
 void test_get_set() {
@@ -42,31 +62,26 @@ void test_get_set() {
 }
 
 /**
- * @brief      Tests the remove function for Array
+ * @brief      Tests the clear functions for array
  */
-void test_remove() {
+void test_clear() {
 	Array* arr = new Array(7);
 	Object* obj = new Object();
-	arr->set(obj, 3);
-	assert(obj->equals(arr->remove(3)));
-	assert(arr->get(3) == NULL);
+	assert(obj->get(2) == NULL);
+	arr->set(obj, 2);
+	assert(obj->equals(arr->clear(2)));
+	assert(arr->get(2) == NULL);
+	for (int i = 0; i < 7; ++i)
+	{
+		arr->set(obj, i);
+		assert(obj->equals(arr->get(i)));
+	}
+	arr->clear_all();
+	for (int i = 0; i < count; ++i)
+	{
+		assert(arr->get(i) == NULL);
+	}
 	delete(obj);
-	delete(arr);
-}
-
-/**
- * @brief      Tests the push function for Array
- */
-void test_push() {
-	Array* arr = new Array(2);
-	Object * obj = new Object();
-	arr->push(obj);
-	assert(obj->equals(arr->get(0)));
-	arr->push(new Object());
-	assert(obj->equals(arr->get(0)));
-	assert(!obj->equals(arr->get(1)));
-	delete(obj);
-	delete(arr->get(1));
 	delete(arr);
 }
 
