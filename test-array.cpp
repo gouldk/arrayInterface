@@ -32,13 +32,13 @@ void test_hash_equals() {
 	assert(arr->hash() == arr2->hash());
 	arr->set(obj, 1);
 	assert(!arr->equals(arr2));
-	assert(!arr->hash() == arr2->hash());
+	assert(arr->hash() != arr2->hash());
 	arr2->set(obj, 1);
 	assert(arr->equals(arr2));
 	assert(arr->hash() == arr2->hash());
 	arr2->resize(20);
 	assert(!arr->equals(arr2));
-	assert(!arr->hash() == arr2->hash());
+	assert(arr->hash() != arr2->hash());
 }
 
 /**
@@ -67,7 +67,7 @@ void test_get_set() {
 void test_clear() {
 	Array* arr = new Array(7);
 	Object* obj = new Object();
-	assert(obj->get(2) == NULL);
+	assert(arr->get(2) == NULL);
 	arr->set(obj, 2);
 	assert(obj->equals(arr->clear(2)));
 	assert(arr->get(2) == NULL);
@@ -77,7 +77,7 @@ void test_clear() {
 		assert(obj->equals(arr->get(i)));
 	}
 	arr->clear_all();
-	for (int i = 0; i < count; ++i)
+	for (int i = 0; i < 7; ++i)
 	{
 		assert(arr->get(i) == NULL);
 	}
@@ -126,8 +126,9 @@ void test_primitives() {
  */
 int main(int argc, char** argv) {
 	test_constructor_length();
+	test_hash_equals();
 	test_get_set();
-	test_remove();
-	test_push();
+	test_clear();
 	test_resize();
+	test_primitives();
 }
