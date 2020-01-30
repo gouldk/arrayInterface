@@ -94,6 +94,13 @@ class Array : public Object {
          * @param[in]  size  The new size of the array
          */
         virtual void resize(size_t size);
+
+        /**
+         * @brief      appends the object at the end of the array. Growing the array if necessary.
+         *
+         * @param      obj   The object
+         */
+        virtual void push(Object* obj)
 };
 
 /**
@@ -186,6 +193,13 @@ class IntArray : public Array {
          * @param[in]  size  The new size of the array
          */
         void resize(size_t size);
+
+        /**
+         * @brief      appends the object at the end of the array. Growing the array if necessary.
+         *
+         * @param      obj   The object
+         */
+        void push(int obj)
 };
 
 /**
@@ -278,6 +292,13 @@ class FloatArray : public Array {
          * @param[in]  size  The new size of the array
          */
         void resize(size_t size);
+
+        /**
+         * @brief      appends the object at the end of the array. Growing the array if necessary.
+         *
+         * @param      obj   The object
+         */
+        void push(float obj)
 };
 
 /**
@@ -370,4 +391,11 @@ class BoolArray : public Array {
          * @param[in]  size  The new size of the array
          */
         void resize(size_t size);
+
+        /**
+         * @brief      appends the object at the end of the array. Growing the array if necessary.
+         *
+         * @param      obj   The object
+         */
+        void push(bool obj)
 };

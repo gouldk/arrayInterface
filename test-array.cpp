@@ -115,6 +115,20 @@ void test_primitives() {
 }
 
 /**
+ * @brief      Tests the push function for Array
+ */
+void test_push() {
+	Array* arr = new Array(1);
+	arr->set(new Object(), 0);
+	assert(arr->length() == 1);
+	arr->push(new Object());
+	assert(arr->length() == 2);
+	delete(arr->get(0));
+	delete(arr->get(1));
+	delete(arr);
+}
+
+/**
  * @brief      Runs tests on the array class
  *
  * @param[in]  argc  The count of arguments
