@@ -100,20 +100,18 @@ void test_resize() {
  * @brief      Tests storage of primitives
  */
 void test_primitives() {
-	FloatWrapper* fw = new FloatWrapper(1.5);
-	IntWrapper* iw = new IntWrapper(2);
-	BoolWrapper* bw = new BoolWrapper(false);
-	Array* arr = new Array(3);
-	arr->set(fw, 0);
-	arr->set(iw, 1);
-	arr->set(bw, 2);
-	assert(fw->equals(arr->get(0)));
-	assert(iw->equals(arr->get(1)));
-	assert(bw->equals(arr->get(2)));
-	delete(fw);
-	delete(iw);
-	delete(bw);
-	delete(arr);
+	FloatArray* farr = new FloatArray(5);
+	IntArray* iarr = new IntArray(5);
+	BoolArray* barr = new BoolArray(5);
+	farr->set(1.5, 0);
+	iarr->set(1, 1);
+	barr->set(true, 2);
+	assert(1.5 == equals(farr->get(0)));
+	assert(1 == equals(iarr->get(1)));
+	assert(true == equals(barr->get(2)));
+	delete(farr);
+	delete(iarr);
+	delete(barr);
 }
 
 /**

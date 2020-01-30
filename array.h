@@ -14,12 +14,12 @@ class Array : public Object {
         /**
          * @brief      Constructs a new instance.
          */
-        Array(size_t length) {}
+        virtual Array(size_t length) {}
 
         /**
          * @brief      Destroys the object.
          */
-        ~Array() {}
+        virtual ~Array() {}
 
          /* @brief      Gets the hash value for this array.
           *             Arrays of the same size with the same elements have the same hash value.
@@ -43,7 +43,7 @@ class Array : public Object {
          *
          * @return     the length of the array
          */
-        size_t length();
+        virtual size_t length();
 
         /**
          * @brief      Searches for the first match and returns the index of it. 
@@ -53,7 +53,7 @@ class Array : public Object {
          *
          * @return     the index of the first match of the given object
          */
-        size_t index_of(Object* obj);
+        virtual size_t index_of(Object* obj);
 
         /**
          * @brief      Stores the given object at the given index in the array. 
@@ -63,7 +63,7 @@ class Array : public Object {
          * @param      obj   The object
          * @param[in]  idx   The index
          */
-        void set(Object* obj, size_t idx);
+        virtual void set(Object* obj, size_t idx);
 
         /**
          * @brief      Gets the object at the specified index.
@@ -72,7 +72,7 @@ class Array : public Object {
          *
          * @return     the object stored at the given index in the array
          */
-        Object* get(size_t idx);
+        virtual Object* get(size_t idx);
 
         /**
          * @brief      Clears the element at the given index by setting it to null.
@@ -81,19 +81,19 @@ class Array : public Object {
          *
          * @return     the object that was removed
          */
-        Object* clear(size_t idx);
+        virtual Object* clear(size_t idx);
 
         /**
          * @brief      Clears all elements in the array
          */
-        void clear_all();
+        virtual void clear_all();
 
         /**
          * @brief      resizes the array to the given size, discarding elements that no longer fit
          *
          * @param[in]  size  The new size of the array
          */
-        void resize(size_t size);
+        virtual void resize(size_t size);
 };
 
 /**
@@ -164,16 +164,16 @@ class IntArray : public Array {
          *
          * @return     the object stored at the given index in the array
          */
-        Object* get(size_t idx);
+        int get(size_t idx);
 
         /**
-         * @brief      Clears the element at the given index by setting it to null.
+         * @brief      Clears the element at the given index by setting it to 0.
          *
          * @param[in]  idx   The index
          *
          * @return     the object that was removed
          */
-        Object* clear(size_t idx);
+        int clear(size_t idx);
 
         /**
          * @brief      Clears all elements in the array
@@ -256,16 +256,16 @@ class FloatArray : public Array {
          *
          * @return     the object stored at the given index in the array
          */
-        Object* get(size_t idx);
+        float get(size_t idx);
 
         /**
-         * @brief      Clears the element at the given index by setting it to null.
+         * @brief      Clears the element at the given index by setting it to 0.
          *
          * @param[in]  idx   The index
          *
          * @return     the object that was removed
          */
-        Object* clear(size_t idx);
+        float clear(size_t idx);
 
         /**
          * @brief      Clears all elements in the array
@@ -348,16 +348,16 @@ class BoolArray : public Array {
          *
          * @return     the object stored at the given index in the array
          */
-        Object* get(size_t idx);
+        bool get(size_t idx);
 
         /**
-         * @brief      Clears the element at the given index by setting it to null.
+         * @brief      Clears the element at the given index by setting it to false.
          *
          * @param[in]  idx   The index
          *
          * @return     the object that was removed
          */
-        Object* clear(size_t idx);
+        bool clear(size_t idx);
 
         /**
          * @brief      Clears all elements in the array
