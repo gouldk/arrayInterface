@@ -106,9 +106,9 @@ void test_primitives() {
 	farr->set(1.5, 0);
 	iarr->set(1, 1);
 	barr->set(true, 2);
-	assert(1.5 == equals(farr->get(0)));
-	assert(1 == equals(iarr->get(1)));
-	assert(true == equals(barr->get(2)));
+	assert(1.5 == farr->get(0));
+	assert(1 == iarr->get(1));
+	assert(true == barr->get(2));
 	delete(farr);
 	delete(iarr);
 	delete(barr);
