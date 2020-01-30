@@ -97,124 +97,277 @@ class Array : public Object {
 };
 
 /**
- * @brief      This class describes a float wrapper.
+ * @brief      This class describes an array of ints.
+ *             The array is of a fixed size and should only resize when the user specifies it.
+ *             Elements of the array are null until set by the user.
  */
-class FloatWrapper : public Object {
-public:
-    /**
-     * @brief      Constructs a new instance.
-     *
-     * @param[in]  f     a float
-     */
-    FloatWrapper(float f) {}
+class IntArray : public Array {
+    public:
+        /**
+         * @brief      Constructs a new instance.
+         */
+        Array(size_t length) {}
 
-    /**
-     * @brief      Destroys the object.
-     */
-    ~FloatWrapper() {}
+        /**
+         * @brief      Destroys the object.
+         */
+        ~Array() {}
 
-    /**
-     * @brief      determines if this object is same as the other one.
-     *
-     * @param      other  The other
-     *
-     * @return     True if equal, false if not
-     */
-    bool equals(Object* other);
+         /* @brief      Gets the hash value for this array.
+          *             Arrays of the same size with the same elements have the same hash value.
+         *
+         * @return     a size_t representing the hash value
+         */
+        size_t hash();
 
-    /**
-     * @brief      Gets the hash value for this object (and sets if unset).
-     *
-     * @return     a size_t representing the hash value
-     */
-    size_t hash();
+        /**
+         * @brief      determines if this array is same as the other one.
+         *             Arrays of the same size with the same elements are equal.
+         *
+         * @param      other  The other object
+         *
+         * @return     True if equal, false if not
+         */
+        bool equals(Object* other);
 
-    /**
-     * @brief      gets the float stored in this wrapper
-     *
-     * @return     the float
-     */
-    float get();
+        /**
+         * @brief      returns the length of the array
+         *
+         * @return     the length of the array
+         */
+        size_t length();
+
+        /**
+         * @brief      Searches for the first match and returns the index of it. 
+         *             Returns the size of the array if the object cannot be found.
+         *
+         * @param      obj   The object
+         *
+         * @return     the index of the first match of the given object
+         */
+        size_t index_of(int obj);
+
+        /**
+         * @brief      Stores the given object at the given index in the array. 
+         *             Replaces previous element stored there.
+         *             Cannot set an index beyond the size of the array.
+         *
+         * @param      obj   The object
+         * @param[in]  idx   The index
+         */
+        void set(int obj, size_t idx);
+
+        /**
+         * @brief      Gets the object at the specified index.
+         *
+         * @param[in]  idx   The index
+         *
+         * @return     the object stored at the given index in the array
+         */
+        Object* get(size_t idx);
+
+        /**
+         * @brief      Clears the element at the given index by setting it to null.
+         *
+         * @param[in]  idx   The index
+         *
+         * @return     the object that was removed
+         */
+        Object* clear(size_t idx);
+
+        /**
+         * @brief      Clears all elements in the array
+         */
+        void clear_all();
+
+        /**
+         * @brief      resizes the array to the given size, discarding elements that no longer fit
+         *
+         * @param[in]  size  The new size of the array
+         */
+        void resize(size_t size);
 };
 
 /**
- * @brief      This class describes an integer wrapper.
+ * @brief      This class describes an array of floats.
+ *             The array is of a fixed size and should only resize when the user specifies it.
+ *             Elements of the array are null until set by the user.
  */
-class IntWrapper : public Object {
-public:
-    /**
-     * @brief      Constructs a new instance.
-     *
-     * @param[in]  i     an int
-     */
-    IntWrapper(int i) {}
+class FloatArray : public Array {
+    public:
+        /**
+         * @brief      Constructs a new instance.
+         */
+        Array(size_t length) {}
 
-    /**
-     * @brief      Destroys the object.
-     */
-    ~IntWrapper() {}
+        /**
+         * @brief      Destroys the object.
+         */
+        ~Array() {}
 
-    /**
-     * @brief      determines if this object is same as the other one.
-     *
-     * @param      other  The other
-     *
-     * @return     True if equal, false if not
-     */
-    bool equals(Object* other);
+         /* @brief      Gets the hash value for this array.
+          *             Arrays of the same size with the same elements have the same hash value.
+         *
+         * @return     a size_t representing the hash value
+         */
+        size_t hash();
 
-    /**
-     * @brief      Gets the hash value for this object (and sets if unset).
-     *
-     * @return     a size_t representing the hash value
-     */
-    size_t hash();
+        /**
+         * @brief      determines if this array is same as the other one.
+         *             Arrays of the same size with the same elements are equal.
+         *
+         * @param      other  The other object
+         *
+         * @return     True if equal, false if not
+         */
+        bool equals(Object* other);
 
-    /**
-     * @brief      gets the int stored in this wrapper
-     *
-     * @return     the int
-     */
-    int get();
+        /**
+         * @brief      returns the length of the array
+         *
+         * @return     the length of the array
+         */
+        size_t length();
+
+        /**
+         * @brief      Searches for the first match and returns the index of it. 
+         *             Returns the size of the array if the object cannot be found.
+         *
+         * @param      obj   The object
+         *
+         * @return     the index of the first match of the given object
+         */
+        size_t index_of(float obj);
+
+        /**
+         * @brief      Stores the given object at the given index in the array. 
+         *             Replaces previous element stored there.
+         *             Cannot set an index beyond the size of the array.
+         *
+         * @param      obj   The object
+         * @param[in]  idx   The index
+         */
+        void set(float obj, size_t idx);
+
+        /**
+         * @brief      Gets the object at the specified index.
+         *
+         * @param[in]  idx   The index
+         *
+         * @return     the object stored at the given index in the array
+         */
+        Object* get(size_t idx);
+
+        /**
+         * @brief      Clears the element at the given index by setting it to null.
+         *
+         * @param[in]  idx   The index
+         *
+         * @return     the object that was removed
+         */
+        Object* clear(size_t idx);
+
+        /**
+         * @brief      Clears all elements in the array
+         */
+        void clear_all();
+
+        /**
+         * @brief      resizes the array to the given size, discarding elements that no longer fit
+         *
+         * @param[in]  size  The new size of the array
+         */
+        void resize(size_t size);
 };
 
 /**
- * @brief      This class describes a bool wrapper.
+ * @brief      This class describes an array of bools.
+ *             The array is of a fixed size and should only resize when the user specifies it.
+ *             Elements of the array are null until set by the user.
  */
-class BoolWrapper : public Object {
-public:
-    /**
-     * @brief      Constructs a new instance.
-     *
-     * @param[in]  b     a bool
-     */
-    BoolWrapper(bool b) {}
+class BoolArray : public Array {
+    public:
+        /**
+         * @brief      Constructs a new instance.
+         */
+        Array(size_t length) {}
 
-    /**
-     * @brief      Destroys the object.
-     */
-    ~BoolWrapper() {}
+        /**
+         * @brief      Destroys the object.
+         */
+        ~Array() {}
 
-    /**
-     * @brief      determines if this object is same as the other one.
-     *
-     * @param      other  The other
-     *
-     * @return     True if equal, false if not
-     */
-    bool equals(Object* other);
+         /* @brief      Gets the hash value for this array.
+          *             Arrays of the same size with the same elements have the same hash value.
+         *
+         * @return     a size_t representing the hash value
+         */
+        size_t hash();
 
-    /**
-     * @brief      Gets the hash value for this object (and sets if unset).
-     *
-     * @return     a size_t representing the hash value
-     */
-    size_t hash();
+        /**
+         * @brief      determines if this array is same as the other one.
+         *             Arrays of the same size with the same elements are equal.
+         *
+         * @param      other  The other object
+         *
+         * @return     True if equal, false if not
+         */
+        bool equals(Object* other);
 
-    /**
-     * @brief      get the bool stored in this wrapper
-     *
-     * @return     the bool
-     */
-    bool get();
+        /**
+         * @brief      returns the length of the array
+         *
+         * @return     the length of the array
+         */
+        size_t length();
+
+        /**
+         * @brief      Searches for the first match and returns the index of it. 
+         *             Returns the size of the array if the object cannot be found.
+         *
+         * @param      obj   The object
+         *
+         * @return     the index of the first match of the given object
+         */
+        size_t index_of(bool obj);
+
+        /**
+         * @brief      Stores the given object at the given index in the array. 
+         *             Replaces previous element stored there.
+         *             Cannot set an index beyond the size of the array.
+         *
+         * @param      obj   The object
+         * @param[in]  idx   The index
+         */
+        void set(bool obj, size_t idx);
+
+        /**
+         * @brief      Gets the object at the specified index.
+         *
+         * @param[in]  idx   The index
+         *
+         * @return     the object stored at the given index in the array
+         */
+        Object* get(size_t idx);
+
+        /**
+         * @brief      Clears the element at the given index by setting it to null.
+         *
+         * @param[in]  idx   The index
+         *
+         * @return     the object that was removed
+         */
+        Object* clear(size_t idx);
+
+        /**
+         * @brief      Clears all elements in the array
+         */
+        void clear_all();
+
+        /**
+         * @brief      resizes the array to the given size, discarding elements that no longer fit
+         *
+         * @param[in]  size  The new size of the array
+         */
+        void resize(size_t size);
 };
