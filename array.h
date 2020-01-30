@@ -3,30 +3,33 @@
 #pragma once
 
 #include <stdlib.h>
+#include <stdio.h>
+#include "object.h"
 
 /**
  * @brief      This class describes an array of objects.
- *             The array is of a fixed size and should only resize when the user specifies it.
- *             Elements of the array are null until set by the user.
  */
 class Array : public Object {
     public:
         /**
          * @brief      Constructs a new instance.
          */
-        virtual Array(size_t length) {}
+        Array(size_t length) {
+        }
 
         /**
          * @brief      Destroys the object.
          */
-        virtual ~Array() {}
+        ~Array() {
+        }
 
-         /* @brief      Gets the hash value for this array.
-          *             Arrays of the same size with the same elements have the same hash value.
+        /* @brief      Gets the hash value for this array.
+         *             Arrays of the same size with the same elements have the same hash value.
          *
          * @return     a size_t representing the hash value
          */
-        size_t hash();
+        size_t hash() {
+        }
 
         /**
          * @brief      determines if this array is same as the other one.
@@ -36,14 +39,16 @@ class Array : public Object {
          *
          * @return     True if equal, false if not
          */
-        bool equals(Object* other);
+        bool equals(Object* other) {
+        }
 
         /**
          * @brief      returns the length of the array
          *
          * @return     the length of the array
          */
-        virtual size_t length();
+        size_t length() {
+        }
 
         /**
          * @brief      Searches for the first match and returns the index of it. 
@@ -53,17 +58,18 @@ class Array : public Object {
          *
          * @return     the index of the first match of the given object
          */
-        virtual size_t index_of(Object* obj);
+        size_t index_of(Object* obj) {
+        }
 
         /**
          * @brief      Stores the given object at the given index in the array. 
          *             Replaces previous element stored there.
-         *             Cannot set an index beyond the size of the array.
          *
          * @param      obj   The object
          * @param[in]  idx   The index
          */
-        virtual void set(Object* obj, size_t idx);
+        void set(Object* obj, size_t idx) {
+        }
 
         /**
          * @brief      Gets the object at the specified index.
@@ -72,7 +78,8 @@ class Array : public Object {
          *
          * @return     the object stored at the given index in the array
          */
-        virtual Object* get(size_t idx);
+        Object* get(size_t idx) {
+        }
 
         /**
          * @brief      Clears the element at the given index by setting it to null.
@@ -81,26 +88,30 @@ class Array : public Object {
          *
          * @return     the object that was removed
          */
-        virtual Object* clear(size_t idx);
+        Object* clear(size_t idx) {
+        }
 
         /**
          * @brief      Clears all elements in the array
          */
-        virtual void clear_all();
+        void clear_all() {
+        }
 
         /**
          * @brief      resizes the array to the given size, discarding elements that no longer fit
          *
          * @param[in]  size  The new size of the array
          */
-        virtual void resize(size_t size);
+        void resize(size_t size) {
+        }
 
         /**
          * @brief      appends the object at the end of the array. Growing the array if necessary.
          *
          * @param      obj   The object
          */
-        virtual void push(Object* obj)
+        void push(Object* obj) {
+        }
 };
 
 /**
@@ -108,24 +119,27 @@ class Array : public Object {
  *             The array is of a fixed size and should only resize when the user specifies it.
  *             Elements of the array are null until set by the user.
  */
-class IntArray : public Array {
+class IntArray : public Object {
     public:
         /**
          * @brief      Constructs a new instance.
          */
-        Array(size_t length) {}
+        IntArray(size_t length) {
+        }
 
         /**
          * @brief      Destroys the object.
          */
-        ~Array() {}
+        ~IntArray() {
+        }
 
          /* @brief      Gets the hash value for this array.
           *             Arrays of the same size with the same elements have the same hash value.
          *
          * @return     a size_t representing the hash value
          */
-        size_t hash();
+        size_t hash() {
+        }
 
         /**
          * @brief      determines if this array is same as the other one.
@@ -135,14 +149,16 @@ class IntArray : public Array {
          *
          * @return     True if equal, false if not
          */
-        bool equals(Object* other);
+        bool equals(Object* other) {
+        }
 
         /**
          * @brief      returns the length of the array
          *
          * @return     the length of the array
          */
-        size_t length();
+        size_t length() {
+        }
 
         /**
          * @brief      Searches for the first match and returns the index of it. 
@@ -152,7 +168,8 @@ class IntArray : public Array {
          *
          * @return     the index of the first match of the given object
          */
-        size_t index_of(int obj);
+        size_t index_of(int obj) {
+        }
 
         /**
          * @brief      Stores the given object at the given index in the array. 
@@ -162,7 +179,8 @@ class IntArray : public Array {
          * @param      obj   The object
          * @param[in]  idx   The index
          */
-        void set(int obj, size_t idx);
+        void set(int obj, size_t idx) {
+        }
 
         /**
          * @brief      Gets the object at the specified index.
@@ -171,7 +189,8 @@ class IntArray : public Array {
          *
          * @return     the object stored at the given index in the array
          */
-        int get(size_t idx);
+        int get(size_t idx) {
+        }
 
         /**
          * @brief      Clears the element at the given index by setting it to 0.
@@ -180,26 +199,30 @@ class IntArray : public Array {
          *
          * @return     the object that was removed
          */
-        int clear(size_t idx);
+        int clear(size_t idx) {
+        }
 
         /**
          * @brief      Clears all elements in the array
          */
-        void clear_all();
+        void clear_all() {
+        }
 
         /**
          * @brief      resizes the array to the given size, discarding elements that no longer fit
          *
          * @param[in]  size  The new size of the array
          */
-        void resize(size_t size);
+        void resize(size_t size) {
+        }
 
         /**
          * @brief      appends the object at the end of the array. Growing the array if necessary.
          *
          * @param      obj   The object
          */
-        void push(int obj)
+        void push(int obj) {
+        }
 };
 
 /**
@@ -207,24 +230,27 @@ class IntArray : public Array {
  *             The array is of a fixed size and should only resize when the user specifies it.
  *             Elements of the array are null until set by the user.
  */
-class FloatArray : public Array {
+class FloatArray : public Object {
     public:
         /**
          * @brief      Constructs a new instance.
          */
-        Array(size_t length) {}
+        FloatArray(size_t length) {
+        }
 
         /**
          * @brief      Destroys the object.
          */
-        ~Array() {}
+        ~FloatArray() {
+        }
 
          /* @brief      Gets the hash value for this array.
           *             Arrays of the same size with the same elements have the same hash value.
          *
          * @return     a size_t representing the hash value
          */
-        size_t hash();
+        size_t hash() {
+        }
 
         /**
          * @brief      determines if this array is same as the other one.
@@ -234,14 +260,16 @@ class FloatArray : public Array {
          *
          * @return     True if equal, false if not
          */
-        bool equals(Object* other);
+        bool equals(Object* other) {
+        }
 
         /**
          * @brief      returns the length of the array
          *
          * @return     the length of the array
          */
-        size_t length();
+        size_t length() {
+        }
 
         /**
          * @brief      Searches for the first match and returns the index of it. 
@@ -251,7 +279,8 @@ class FloatArray : public Array {
          *
          * @return     the index of the first match of the given object
          */
-        size_t index_of(float obj);
+        size_t index_of(float obj) {
+        }
 
         /**
          * @brief      Stores the given object at the given index in the array. 
@@ -261,7 +290,8 @@ class FloatArray : public Array {
          * @param      obj   The object
          * @param[in]  idx   The index
          */
-        void set(float obj, size_t idx);
+        void set(float obj, size_t idx) {
+        }
 
         /**
          * @brief      Gets the object at the specified index.
@@ -270,7 +300,8 @@ class FloatArray : public Array {
          *
          * @return     the object stored at the given index in the array
          */
-        float get(size_t idx);
+        float get(size_t idx) {
+        }
 
         /**
          * @brief      Clears the element at the given index by setting it to 0.
@@ -279,26 +310,30 @@ class FloatArray : public Array {
          *
          * @return     the object that was removed
          */
-        float clear(size_t idx);
+        float clear(size_t idx) {
+        }
 
         /**
          * @brief      Clears all elements in the array
          */
-        void clear_all();
+        void clear_all() {
+        }
 
         /**
          * @brief      resizes the array to the given size, discarding elements that no longer fit
          *
          * @param[in]  size  The new size of the array
          */
-        void resize(size_t size);
+        void resize(size_t size) {
+        }
 
         /**
          * @brief      appends the object at the end of the array. Growing the array if necessary.
          *
          * @param      obj   The object
          */
-        void push(float obj)
+        void push(float obj) {
+        }
 };
 
 /**
@@ -306,24 +341,27 @@ class FloatArray : public Array {
  *             The array is of a fixed size and should only resize when the user specifies it.
  *             Elements of the array are null until set by the user.
  */
-class BoolArray : public Array {
+class BoolArray : public Object {
     public:
         /**
          * @brief      Constructs a new instance.
          */
-        Array(size_t length) {}
+        BoolArray(size_t length) {
+        }
 
         /**
          * @brief      Destroys the object.
          */
-        ~Array() {}
+        ~BoolArray() {
+        }
 
          /* @brief      Gets the hash value for this array.
           *             Arrays of the same size with the same elements have the same hash value.
          *
          * @return     a size_t representing the hash value
          */
-        size_t hash();
+        size_t hash() {
+        }
 
         /**
          * @brief      determines if this array is same as the other one.
@@ -333,14 +371,16 @@ class BoolArray : public Array {
          *
          * @return     True if equal, false if not
          */
-        bool equals(Object* other);
+        bool equals(Object* other) {
+        }
 
         /**
          * @brief      returns the length of the array
          *
          * @return     the length of the array
          */
-        size_t length();
+        size_t length() {
+        }
 
         /**
          * @brief      Searches for the first match and returns the index of it. 
@@ -350,7 +390,8 @@ class BoolArray : public Array {
          *
          * @return     the index of the first match of the given object
          */
-        size_t index_of(bool obj);
+        size_t index_of(bool obj) {
+        }
 
         /**
          * @brief      Stores the given object at the given index in the array. 
@@ -360,7 +401,8 @@ class BoolArray : public Array {
          * @param      obj   The object
          * @param[in]  idx   The index
          */
-        void set(bool obj, size_t idx);
+        void set(bool obj, size_t idx) {
+        }
 
         /**
          * @brief      Gets the object at the specified index.
@@ -369,7 +411,8 @@ class BoolArray : public Array {
          *
          * @return     the object stored at the given index in the array
          */
-        bool get(size_t idx);
+        bool get(size_t idx) {
+        }
 
         /**
          * @brief      Clears the element at the given index by setting it to false.
@@ -378,24 +421,28 @@ class BoolArray : public Array {
          *
          * @return     the object that was removed
          */
-        bool clear(size_t idx);
+        bool clear(size_t idx) {
+        }
 
         /**
          * @brief      Clears all elements in the array
          */
-        void clear_all();
+        void clear_all() {
+        }
 
         /**
          * @brief      resizes the array to the given size, discarding elements that no longer fit
          *
          * @param[in]  size  The new size of the array
          */
-        void resize(size_t size);
+        void resize(size_t size) {
+        }
 
         /**
          * @brief      appends the object at the end of the array. Growing the array if necessary.
          *
          * @param      obj   The object
          */
-        void push(bool obj)
+        void push(bool obj) {
+        }
 };
